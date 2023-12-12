@@ -3,6 +3,8 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 10px;
+  min-width: 300px; /* Adjust as needed */
+  min-height: 400px; /* Adjust as needed */
 }
 
 h1 {
@@ -10,6 +12,19 @@ h1 {
 }
 
 button {
+  display: block;
+  width: 100%; /* Ensures all buttons have the same width */
   margin-top: 10px;
   cursor: pointer;
+  padding: 10px 0; /* Adds padding for better button size */
+}
+
+#result {
+  margin-top: 20px;
+  background-color: #f9f9f9; /* Light background for the text display */
+  padding: 15px;
+  border-radius: 5px; /* Optional: Rounds the corners */
+  border: 1px solid #ddd; /* Optional: Adds a subtle border */
+  min-height: 150px; /* Adjust as needed */
+  overflow-y: auto; /* Allows scrolling if content is too long */
 }
