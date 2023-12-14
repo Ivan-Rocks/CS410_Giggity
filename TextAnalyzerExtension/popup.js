@@ -100,19 +100,21 @@ async function summarizeText(action) {
 }
 
 // New function to analyze sentiment
-const positiveKeywords = ['happy', 'great', 'joy', 'positive', 'successful', 'good', 'love', 'excellent', 'fortunate', 'correct', 'superior'];
-const negativeKeywords = ['sad', 'bad', 'trouble', 'negative', 'fail', 'wrong', 'poor', 'hate', 'terrible', 'awful', 'inferior'];
-
 async function analyzeSentiment(text) {
+    const positiveKeywords = ['happy', 'joy', 'love', 'wonderful', 'good', 'great', 'positive', 'excellent', 'best', 'beautiful', 'fantastic', 'amazing', 'like', 'success', 'win', 'delight', 'pleasure', 'satisfied', 'content', 'enjoy', 'hope', 'proud', 'celebrate', 'admire', 'brilliant', 'cheerful', 'lucky', 'superb', 'prosperous', 'thriving'];
+    const negativeKeywords = ['sad', 'bad', 'hate', 'terrible', 'poor', 'wrong', 'negative', 'awful', 'fail', 'difficult', 'hard', 'worse', 'worst', 'nasty', 'unhappy', 'pain', 'angry', 'annoyed', 'dislike', 'problem', 'suffer', 'damage', 'loss', 'destroy', 'trouble', 'harm', 'ruin', 'disaster', 'fear', 'worried'];
+
     let positiveCount = 0;
     let negativeCount = 0;
     
-    const words = text.toLowerCase().match(/\b(\w+)\b/g); // Extract words from text
+    const words = text.toLowerCase().match(/\b(\w+)\b/g);
 
-    words.forEach(word => {
-        if (positiveKeywords.includes(word)) positiveCount++;
-        if (negativeKeywords.includes(word)) negativeCount++;
-    });
+    if (words) {
+        words.forEach(word => {
+            if (positiveKeywords.includes(word)) positiveCount++;
+            if (negativeKeywords.includes(word)) negativeCount++;
+        });
+    }
 
     let sentimentResult = 'Neutral';
     if (positiveCount > negativeCount) {
@@ -121,7 +123,7 @@ async function analyzeSentiment(text) {
         sentimentResult = 'Negative';
     }
 
-    document.getElementById('result').textContent = `Sentiment: ${sentimentResult}`;
+    document.getElementById('result').textContent = `Sentiment: ${sentimentResult} (Positive: ${positiveCount}, Negative: ${negativeCount})`;
 }
 
 // Event listeners for buttons
