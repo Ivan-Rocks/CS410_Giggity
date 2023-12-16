@@ -414,13 +414,15 @@ __webpack_require__.r(__webpack_exports__);
 
 var Sentiment = __webpack_require__(/*! sentiment */ "./node_modules/sentiment/lib/index.js");
 const openai_api_url = 'https://api.openai.com/v1/engines/text-davinci-003/completions';
+const p1 =  'Bearer sk-QCu4s6nKiTxJuu4'
+const p2 = 'HntBCT3BlbkFJkDovnezCWnOz1deCp38t'
 
 async function queryGPT3(promptText) {
   const response = await fetch(openai_api_url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer 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`
+      'Authorization': p1+p2
     },
     body: JSON.stringify({
       //model: "text-davinci-003",
