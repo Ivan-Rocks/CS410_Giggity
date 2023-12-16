@@ -501,7 +501,14 @@ function sentimentAnalysis() {
   var sentiment = new Sentiment();
   var result = sentiment.analyze(documentText.toString());
   console.dir(result);
-  document.getElementById('result').textContent = result.score + " " + result.comparative;
+  if (result<=0.5&&result>=-0.5)
+    document.getElementById('result').textContent = "neutral";
+  if (result>0.5)
+    document.getElementById('result').textContent = "positive";
+  if (result,-0.5)
+    document.getElementById('result').textContent = "negative";
+  //document.getElementById('result').textContent = result.score + " " + result.comparative;
+
 }
 
 function topicSummary() {

@@ -12,87 +12,78 @@
 /* normalize css ends here */
 
 html {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   color: #222;
 }
 
 body {
-  width: 350px;
-  height: 300px;
-}
-
-.app {
-  height: 100%;
+  width: 350px; /* Adjust if you want a wider or narrower popup */
+  margin: 0 auto; /* Center the body within the popup window */
+  padding: 10px;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  align-items: stretch; /* Stretch children to fit the width of the body */
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
   text-align: center;
-  padding: 20px;
+  margin: 10px 0;
 }
 
-.title {
-  font-size: 18px;
-  font-weight: 600;
+/* Input Box */
+#inputText {
+  width: 100%;
+  padding: 10px;
   margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.subtitle {
-  font-size: 12px;
-}
-
-code {
-  font-size: 12px;
-  font-family: inherit;
-  background-color: rgba(254, 237, 185, 0.3);
-  padding: 2px 4px;
-  border-radius: 2px;
-}
-
-.counter-label {
-  font-size: 12px;
-  margin-bottom: 5px;
-}
-
-.counter {
-  font-size: 36px;
-  font-weight: 700;
-}
-
-.button-container {
-  margin-top: 15px;
-}
-
-.button {
-  border: 0;
-  display: inline-block;
-  padding: 10px 20px;
-  margin-right: 4px;
-  margin-left: 4px;
+/* Button styles */
+button {
+  padding: 10px;
+  width: 100%; /* Make buttons full width */
+  margin-bottom: 5px; /* Reduced space between buttons */
+  border: none;
+  border-radius: 4px;
   background-color: bisque;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: transform 0.2s ease;
   user-select: none;
+  transition: background-color 0.2s ease; /* Smooth background color transition */
 }
 
-.button:focus {
+button:hover {
+  background-color: #e4d5c3; /* Color change on hover */
+}
+
+button:focus {
   outline: none;
 }
 
-.button:hover {
-  transform: scale(1.1);
+/* Display Screens */
+#result, #topicsummary {
+  width: 100%;
+  min-height: 50px; /* Adjust if you want a larger or smaller display area */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
 }
 
-.divider {
-  margin: 30px auto 25px;
-  width: 50px;
-  border: 0.5px dashed #000;
-  opacity: 0.1;
+/* Apply changes to the specific button if necessary */
+#topicBtn {
+  padding: 10px;
+  width: 100%; /* Ensure this button also takes the full width */
+  margin-bottom: 5px; /* Consistent margin with other buttons */
 }
 
-
-/*# sourceMappingURL=popup.css.map*/
+/* Apply changes to the specific display area if necessary */
+#topicsummary {
+  width: 100%; /* Ensure this display area also takes the full width */
+  /* Other styles remain consistent with #result */
+}
