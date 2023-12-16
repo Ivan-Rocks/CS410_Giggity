@@ -2,7 +2,26 @@
 
 import './popup.css';
 var Sentiment = require('sentiment');
-var sentiment = new Sentiment();
+const openai_api_url = 'https://api.openai.com/v1/engines/text-davinci-003/completions';
+
+async function queryGPT3(promptText) {
+  const response = await fetch(openai_api_url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer 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`
+    },
+    body: JSON.stringify({
+      //model: "text-davinci-003",
+      prompt: promptText,
+      max_tokens: 1500,
+      temperature: 0.5
+    })
+  });
+  console.log(response.status);
+  const data = await response.json();
+  return data.choices[0].text.trim();
+}
 
 function getText() {
   var inputText = document.getElementById('inputText').value;
@@ -67,7 +86,26 @@ async function summarizeText(action) {
   //document.getElementById('result').textContent = window.tf;
 }
 
+function sentimentAnalysis() {
+  var sentiment = new Sentiment();
+  var result = sentiment.analyze(documentText.toString());
+  console.dir(result);
+  document.getElementById('result').textContent = result.score + " " + result.comparative;
+}
+
+function topicSummary() {
+  console.log("here");
+  var promptText = "Give me a very less than 30 word SUMMARY of : " + window.documentText.toString();
+  console.log(promptText);
+  queryGPT3("promptText").then(response => {
+    console.log(response);
+    document.getElementById('topicsummary').textContent = response;
+  }).catch(error => {
+    console.error('Error:', error);
+  });
+}
 
 document.getElementById('getTextButton').addEventListener('click', getText);
 document.getElementById('summarizeBtn').addEventListener('click', () => summarizeText('summarize'));
-document.getElementById('sentimentBtn').addEventListener('click', () => displayText('sentiment'));
+document.getElementById('sentimentBtn').addEventListener('click', () => sentimentAnalysis('sentiment'));
+document.getElementById('topicBtn').addEventListener('click', topicSummary);

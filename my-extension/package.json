@@ -22,6 +22,9 @@
     "webpack-merge": "^5.10.0"
   },
   "dependencies": {
-    "sentiment": "^5.0.2"
+    "node-fetch": "^3.3.2",
+    "openai": "^4.22.0",
+    "sentiment": "^5.0.2",
+    "zlib": "^1.0.5"
   }
 }
