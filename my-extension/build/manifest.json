@@ -31,6 +31,9 @@
     }
   ],
   "web_accessible_resources": [
-    "IDF.json"
+    {
+      "resources": ["IDF.json"],
+      "matches": ["<all_urls>"]
+    }
   ]
 }
